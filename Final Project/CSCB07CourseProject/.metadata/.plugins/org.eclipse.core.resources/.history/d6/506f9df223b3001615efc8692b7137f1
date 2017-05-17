@@ -1,0 +1,33 @@
+package cs.b07.cscb07courseproject;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.content.Intent;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+
+import travel.Client;
+
+public class ClientInfoResponse extends AppCompatActivity {
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_client_info_response);
+
+    Intent intent = getIntent();
+    Client c1 = (Client) intent.getSerializableExtra("clientkey");
+    String message = "First Name:   " + c1.getFirstName() + "\n" + "Last Name:   " + c1.getLastName() + "\n"
+        + "Address:     " + c1.getPersonalAddress() + "\n" + "Credit Card: " + c1.getCreditCardNumber() + "\n"
+        + "Expiry Date: " + new SimpleDateFormat("yyyy-MM-dd").format(c1.getExpiry());
+
+    TextView textView = new TextView(this);
+    textView.setTextSize(20);
+    textView.setText(message);
+
+    ViewGroup layout = (ViewGroup) findViewById(R.id.activity_client_info_response);
+    layout.addView(textView);
+  }
+}

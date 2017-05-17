@@ -1,0 +1,129 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:2:1-52:12
+	package
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:3:5-41
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+application
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:5:5-50:19
+MERGED from [com.android.support:appcompat-v7:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-vector-drawable:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:9:9-41
+	android:supportsRtl
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:10:9-35
+	android:allowBackup
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:7:9-35
+	android:icon
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:8:9-43
+	android:theme
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:11:9-40
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:6:9-34
+activity#cs.b07.cscb07courseproject.LogIn
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:12:9-17:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:12:19-40
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:13:13-16:29
+action#android.intent.action.MAIN
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:15:17-77
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:15:27-74
+activity#cs.b07.cscb07courseproject.SearchFlights
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:18:9-19:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:18:19-48
+activity#cs.b07.cscb07courseproject.SearchItineraries
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:20:9-21:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:20:19-52
+activity#cs.b07.cscb07courseproject.SearchClients
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:22:9-23:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:22:19-48
+activity#cs.b07.cscb07courseproject.ClientInfo
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:24:9-25:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:24:19-45
+activity#cs.b07.cscb07courseproject.Register
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:26:9-27:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:26:19-43
+activity#cs.b07.cscb07courseproject.ChangePass
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:28:9-29:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:28:19-45
+activity#cs.b07.cscb07courseproject.AddFlights
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:30:9-31:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:30:19-45
+activity#cs.b07.cscb07courseproject.MainMenuClient
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:32:9-33:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:32:19-49
+activity#cs.b07.cscb07courseproject.FlightResults
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:34:9-35:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:34:19-48
+activity#cs.b07.cscb07courseproject.FlightListView
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:36:9-52
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:36:19-49
+activity#cs.b07.cscb07courseproject.AddClient
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:37:9-38:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:37:19-44
+activity#cs.b07.cscb07courseproject.MainMenuAdmin
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:39:9-40:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:39:19-48
+activity#cs.b07.cscb07courseproject.ItineraryResults
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:41:9-42:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:41:19-51
+activity#cs.b07.cscb07courseproject.ItineraryListView
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:43:9-55
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:43:19-52
+activity#cs.b07.cscb07courseproject.Flight
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:44:9-45:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:44:19-41
+activity#cs.b07.cscb07courseproject.Itinerary
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:46:9-47:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:46:19-44
+activity#cs.b07.cscb07courseproject.ViewBookedItineraries
+ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:48:9-49:20
+	android:name
+		ADDED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml:48:19-56
+uses-sdk
+INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-vector-drawable:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:animated-vector-drawable:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/AndroidManifest.xml:20:5-44
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.0.0] /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/src/main/AndroidManifest.xml

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.0.0_f1c2b0b802c04719c7f71dd25d1b4c70721df8e1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e22ea2347bc4d0cac78a6f7dbcfd938121cb42ed">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b2235c1b67c65f66f30b605b9503d011575422fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/salmansharif/Documents/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_baa749157148a11c965dd374b4096f0e08f4acd7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_4592085cfaaa5fbe535befbae63b87bde5a1bf17/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.0.0_ddcbd5ee038b11fa9460cdaead2a526b816ca593/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_d33d00cd764fc1481a4cea405ddc0430dbfd3647/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="537bcd3492e58d70dfa92affbeedc0d8bb899833">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c072401f6836a67d07a10b4c314cf7093a82cde8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.0.0_f09a3989e0c14560683c86e70a619ebb312e69a3/classes.dex" />
+    </item>
+
+</items>

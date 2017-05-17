@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cs.b07.cscb07courseproject"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="24" />
+
+    <application
+        android:name="sql.SqlApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="cs.b07.cscb07courseproject.LogIn" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.SearchFlights" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.SearchItineraries" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.SearchClients" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.ClientInfo" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.Register" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.ChangePass" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.AddFlights" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.MainMenuClient" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.FlightResults" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.FlightListView" />
+        <activity android:name="cs.b07.cscb07courseproject.AddClient" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.MainMenuAdmin" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.ItineraryResults" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.ItineraryListView" />
+        <activity android:name="cs.b07.cscb07courseproject.Flight" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.Itinerary" >
+        </activity>
+        <activity android:name="cs.b07.cscb07courseproject.ViewBookedItineraries" >
+        </activity>
+    </application>
+
+</manifest>

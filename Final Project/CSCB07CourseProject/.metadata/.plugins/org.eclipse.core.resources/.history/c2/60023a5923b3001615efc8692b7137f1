@@ -1,0 +1,358 @@
+package controller;
+
+
+import travel.Client;
+import travel.Flight;
+import travel.Itinerary;
+import travel.User;
+
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
+import driver.Driver;
+
+
+
+/**
+ * Backend class.
+ * 
+ * @author Rene, Salman
+ *
+ */
+public class Backend {
+  
+  
+  private User user;
+  private Flight[] flights;
+  private Storage data;
+
+  /**
+   * Initializes new <code>Backend</code> object, no constructor required.
+   * 
+   */
+  public Backend() {
+    // Creates data with default path.
+    try {
+      this.data = new Storage();
+      // Gets all flights in the system.
+      this.flights = data.getFlights();
+    } catch (StorageException ex) {
+      // Catches exception if the default path could not load.
+      ex.printStackTrace();
+    }
+  }
+
+  /**
+   * Initializes new <code>Backend</code> object with specified path.
+   * 
+   * @param path
+   *          path to store data.
+   * @throws StorageException
+   *          StorageException thrown if there is a problem with default path.
+   */
+  public Backend(String path) {
+    // Creates data with specified path.
+    try {
+      this.data = new Storage(path);
+      // Gets all flights in the system.
+      this.flights = data.getFlights();
+    } catch (StorageException ex) {
+      // Catches exception if the specified. path could not load.
+      ex.printStackTrace();
+    }
+  }
+  
+  /**
+   * Returns a list of itineraries with specified information.
+   * 
+   * @param departureDate
+   *          The date of departure being searched for.
+   * @param origin
+   *          The origin of the flight.
+   * @param destination
+   *          The destination of the flight.
+   * @return List of all itineraries with the specified date, origin, and
+   *         destination.
+   * @throws ParseException 
+   *          <code>ParseException</code> for invalid date.
+   */
+  public List<Itinerary> getItineraries(Date departureDate, String origin, String destination)
+      throws ParseException {
+    User us;
+    if (!(user instanceof Client)) {
+      us = new Client();
+    } else {
+      us = this.user;
+    }
+    // get all possible itineraries
+    ArrayList<LinkedList<Flight>> possibleItineraries = 
+        getAllPossibleItineraries(departureDate, origin, destination);
+    // remove any itineraries that do not end at destination
+    removeItinerariesWithoutDestination(possibleItineraries, destination);
+    // remove any cycling itinerary
+    removeCyclingItineraries(possibleItineraries);
+    // make the array list into an array of itineraries
+    
+    return makeToListOfItinerary(possibleItineraries, us);
+  }
+  
+  private List<Itinerary> makeToListOfItinerary(ArrayList<LinkedList<Flight>> itineraries,
+      User user) throws ParseException {
+    ArrayList<Itinerary> res = new ArrayList<>();
+    // loop over each link list
+    for (int i = 0; i < itineraries.size(); i++) {
+      // create array of flight and new itinerary
+      Flight[] flights = itineraries.get(i).toArray(new Flight[itineraries.get(i).size()]);
+      String origin = itineraries.get(i).peekFirst().getOrigin();
+      String destination = itineraries.get(i).peekLast().getDestination();
+      Itinerary itinerary = new Itinerary((Client) user, flights, origin, destination);
+      res.add(itinerary);
+    }
+    return res;
+  }
+  
+  private void removeCyclingItineraries(ArrayList<LinkedList<Flight>> itineraryList) {
+    // loop over each itinerary
+    for (int i = 0; i < itineraryList.size(); i++) {
+      LinkedList<Flight> itineray = itineraryList.get(i);
+      boolean cycleOccurred = false;
+      // create a temporary list that tract each destination
+      ArrayList<String> destinations = new ArrayList<>();
+      // loop through each flight,
+      for (int j = 0; j < itineray.size(); j++) {
+        Flight flight = itineray.get(j);
+        // check if destination of this flight already occurred
+        if (destinations.contains(flight.getDestination())) {
+          // if destination already occurred, flag this itinerary
+          cycleOccurred = true;
+        } else {
+          // else add this flights destination to list of destinations.
+          destinations.add(flight.getDestination());
+        }
+      }
+      // if cycle occurred, remove this itinerary
+      if (cycleOccurred) {
+        itineraryList.remove(i);
+      }
+    }
+  }
+  
+  private void removeItinerariesWithoutDestination(ArrayList<LinkedList<Flight>> itineraryList, 
+      String destination) {
+    // loop over each list of itineraries,
+    for (int i = 0; i < itineraryList.size(); i++) {
+      LinkedList<Flight> itinerary = itineraryList.get(i);
+      // get the last flight in the itinerary
+      Flight lastFlight = itinerary.peekLast();
+      // check if it does not have the same destination and remove it form this list
+      boolean checkDestination = lastFlight.getDestination().equals(destination);
+      if (!(checkDestination)) {
+        itineraryList.remove(i);
+      }
+    }
+  }
+
+  private ArrayList<LinkedList<Flight>> getAllPossibleItineraries(
+      Date departureDate, String origin, String destination) {
+    // base case: no flights at origin, departure date out of range, origin == destination 
+    // return an empty array of flights.
+    ArrayList<LinkedList<Flight>> res = new ArrayList<>();
+    ArrayList<Flight> flightsWithThisOriginAndDepartDate = 
+        getsFlightsWithOriginAndDepartDate(departureDate, origin);
+    if (origin == destination || flightsWithThisOriginAndDepartDate.isEmpty()) {
+      return res;
+    } else {
+      // loop over each flight
+      for (int i = 0; i < flightsWithThisOriginAndDepartDate.size(); i++) {
+        // get list of flight connecting this flight
+        Flight flight = flightsWithThisOriginAndDepartDate.get(i);
+        Date nextDepart = null;
+        nextDepart = new Date(flight.getArrivalDate().getTime() 
+            + Driver.MIN_LAYOVER*1000);
+        String nextOrigin = flight.getDestination();
+        ArrayList<LinkedList<Flight>> connectingFlights = getAllPossibleItineraries(nextDepart, 
+            nextOrigin, destination);
+        // if the connecting flights is empty, create a new linked list with this flight as the head
+        // add it to res
+        if (connectingFlights.isEmpty()) {
+          LinkedList<Flight> connectedFlights = new LinkedList<>();
+          connectedFlights.add(flight);
+          res.add(connectedFlights);
+        } else {
+          // add this flight to each head of the flight and add each connected flights to res
+          for (int j = 0; j < connectingFlights.size(); j++) {
+            LinkedList<Flight> connectedFlights = connectingFlights.get(j);
+            connectedFlights.addFirst(flight);
+            res.add(connectedFlights);
+          }
+        }
+      }
+      return res;
+    }
+  }
+  
+  
+  private ArrayList<Flight> getsFlightsWithOriginAndDepartDate(Date departDate, String origin) {
+    ArrayList<Flight> res = new ArrayList<>();
+    Date flightDepartBefore = new Date(Driver.MAX_LAYOVER*1000 + departDate.getTime());
+    // loop through every flights in the array of flights.
+    for (int i = 0; i < flights.length; i++) {
+      // get flight i and its depart date
+      Flight flight = flights[i];
+      Date flightDepartDate = flight.getDepartureDate();
+      // check if flight i is in range of departDate, if so add it to res
+      boolean checkOrigin = flight.getOrigin().equals(origin);
+      boolean checkDepartDate = flightDepartDate
+          .after(departDate) && flightDepartDate.before(flightDepartBefore);
+      if (checkOrigin && checkDepartDate) {
+        res.add(flight);
+      }
+    }
+    return res;
+  }
+
+  
+  
+  /** Sorts itinerary by TravelTime.
+   * @param itineraries needs to be List of Flights
+   */
+  public void sortItinerariesByTravelTime(List<Itinerary> itineraries) {
+    java.util.Collections.sort(itineraries, new CompareItinerairesByTravelTime());
+  }
+
+  /** Sorts itinerary by Cost.
+   * @param itineraries needs to be List of Flights
+   */
+  public void sortItinerariesByCost(List<Itinerary> itineraries) {
+    java.util.Collections.sort(itineraries, new CompareItinerairesByCost());
+  }
+  
+  /**
+   * Searches for all available <code>Flight</code> given a specific
+   * departureDate, an origin, and destination.
+   * 
+   * @param departureDate
+   *          date of departure of the requested <code>Flight</code>.
+   * @param origin
+   *          place of origin of the requested <code>Flight</code>.
+   * @param destination
+   *          destination of the requested <code>Flight</code>.
+   * @return A list of flights matching the given input with all information of
+   *         those flights.
+   * @throws StorageException
+   *           <code>StorageException</code> thrown if file was not loaded.
+   */
+  public List<String> searchFlight(String departureDate, String origin, String destination)
+      throws StorageException {
+    // Initialize empty list of flights.
+    List<String> flightList = new ArrayList<String>();
+    DateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+    Date dep;
+    try {
+      dep = fm.parse(departureDate);
+      // Loops through all flights.
+      for (int i = 0; i < this.flights.length; i++) {
+        // Check if input matches flight information.
+        if (fm.parse(fm.format(this.flights[i].getDepartureDate())).equals(dep)
+            && this.flights[i].getOrigin().equals(origin)
+            && this.flights[i].getDestination().equals(destination)) {
+          // Creates a temporary String to add to the list of flights with required input.
+          // Uses flightsearchHelper (only done for clean code).
+          String stringflight = flightsearchHelper(this.flights[i]);
+          flightList.add(stringflight);
+        }
+      }
+      return flightList;
+    } catch (ParseException ex) {
+      // Returns null if exception.
+      ex.printStackTrace();
+      return null;
+    }
+  }
+  
+  /**
+   * Helper function to search for Flights. Returns string to add to list of flights.
+   * @param flights
+   *        <code>Flight</code> object of information to retrieve.
+   * @return
+   *        String of information of the <code>Flight</code>.
+   */
+  private String flightsearchHelper(Flight flights) {
+    DateFormat fm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    String dep = fm.format(flights.getDepartureDate());
+    String arr = fm.format(flights.getArrivalDate());
+    DecimalFormat df = new DecimalFormat("#.00");
+    String price = df.format(flights.getCost());
+    return (flights.getFlightNumber() + ";" + dep + ";"
+        + arr + ";" + flights.getAirline() + ";" + flights.getOrigin() + ";"
+        + flights.getDestination() + ";" + price);
+  }
+  
+  /**
+   * Searches for the specified client with a given e-mail.
+   * 
+   * @param email
+   *          the e-mail of the client to search for.
+   * @return the client with all their information in the system.
+   * @throws StorageException
+   *           <code>StorageException</code> thrown if a user does not exist.
+   */
+  public String searchClient(String email) throws StorageException {
+    // Temporary null assignment for client. Later used for Exception.
+    Client cl = null;
+    // Initializes a list of client retrieved from <code>Storage</code>.
+    Client[] clients = this.data.getClients();
+    // Loops through all clients.
+    for (int i = 0; i < clients.length; i++) {
+      // If e-mails are equals, cl takes on that <code>Client</code> object.
+      if (clients[i].getEmail().equals(email)) {
+        cl = clients[i];
+      }
+    }
+    // If after all operations cl is still null, new exception is thrown.
+    if (cl == null) {
+      throw new StorageException("A user with that e-mail does not exist.");
+    }
+    return (cl.getLastName() + ";" + cl.getFirstName() + ";" + cl.getEmail() + ";"
+        + cl.getPersonalAddress() + ";" + cl.getCreditCardNumber() + ";"
+        + new SimpleDateFormat("yyyy-MM-dd").format(cl.getExpiry()));
+    
+    
+  }
+
+  /**
+   * Add <code>Flight</code> to the list of possible flights with a given text
+   * file. Only administrators can do this.
+   * 
+   * @param path
+   *          The text file location of the <code>Flight</code>(s) to be added.
+   * @throws StorageException
+   *           <code>StorageException</code> thrown from <code>Storage</code> if
+   *           no path.
+   */
+  public void addFlight(String path) throws StorageException {
+    this.data.loadFlights(path);
+    this.flights = this.data.getFlights();
+  }
+  
+  /**
+   * Add <code>Client</code> to the list of clients with a given text file. Only
+   * administrators can do this.
+   * 
+   * @param path
+   *          The text file location of the <code>Client</code>(s) to be added.
+   * @throws StorageException
+   *           <code>StorageException</code> thrown from <code>Storage</code> if
+   *           no path.
+   */
+  public void addClient(String path) throws StorageException {
+    this.data.loadClients(path);
+  }
+
+}

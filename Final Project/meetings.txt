@@ -1,0 +1,59 @@
+Planning Meeting (November 12)
+Controller Package:
+- Storage class to be started (Cameron)
+	- main methods to be started are loading and saving client data (including flight and itinerary information)
+- Backend class to be started (Rene)
+	- main methods include getting and booking itineraries. Adding flights may also be included (note: need to extract input from front end)
+- To add a new password class for password hashing (cannot store raw password as it is not secure) (Salman)
+	- needs to be started. Will need monitoring as it's a completely new class.
+Travel Package:
+- User abstract class to be started (Yuanyuan)
+	- Client and Administrator classes to also begin, mainly consisting of objects with getters/setters to be used by storage and backend in controller
+- Flight and Itinerary classes to be started (Yuanyuan)
+	- mainly variables and getters/setters.
+Status meeting to be in 2-3 days (14-15 November depending on circumstances)
+--------------------------------------------------------------------------
+Status meeting (November 15)
+Controller Package:
+- Storage class finished (Cameron)
+	- most things finished. Some exceptions still need to be implemented.
+	- needs to be tested.
+- Backend class started (Rene)
+	- skeleton of all necessary methods complete. Need to begin completing.
+	- Algorithm of itinerary searching to be started (Salman)
+- Password was instead put into Backend class instead of it's own class (Salman)
+	- Password hashing completed into Backend. Should be a better choice seeing as how it's completely private in that class.
+Travel Package:
+- All classes added (Yuanyuan)
+- Final touch ups on getting and setting fields in progress (Yuanyuan)
+- Some clarification on totalCost, travelTime of Itinerary.java needed (Rene to meet with professor during office hours)
+Next status meeting not yet determined. Will determine via messages. Should occur within 3 days at most.
+----------------------------------------------------------------------------
+Planning Meeting (November 18)
+
+- All classes should be well working. Testing needs to begin.
+- Everyone to test each class/package they have been working on.
+- Some functions have been removed to be implemented in next phase.
+- Constant communication will occur until the end of testing.
+
+Another meeting to occur before due date to make sure everything is finalized.
+----------------------------------------------------------------------------
+Status Meeting (November 20)
+
+- Most tests have been conducted. Sampletests for getFlight and getClient turned out to be successful.
+- Manual tests also successful. Uploading information from a file for uploadClientInfo and uploadFlightInfo seems to be working.
+- Final tests with itineraries to be completed.
+-----------------------------------------------------------------------------
+Phase 3
+
+Planning meeting (November 22)
+
+- Phase 3a interview preparation; to link up Android and Java and enable a way of using getClient(email) from Backend. (Rene, Yuanyuan)
+- Refine Storage and add new functions required. Enable checks for duplicates. (Cameron)
+- Refine Backend and add new functions required. (Salman)
+
+Status Meeting (November 29)
+
+- Database implementation mostly done. Need to check with professor tomorrow (Cameron)
+- Most UI elements complete and currently underway (Salman)
+- Function calling from Backend to be worked on for each activity (Rene, Yuanyuan)

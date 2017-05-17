@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flight Booking</string>
+    <string name="edit_message">Client E-mail</string>
+    <string name="button_send">Get Info</string>
+    <string name="login_password">Password</string>
+    <string name="login_username">Email</string>
+    <string name="login_signin">Sign In</string>
+    <string name="login_register">Sign Up</string>
+
+    <string name="register_header">Create a New Account</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_pass">Re-enter Password</string>
+    <string name="register_firstname">First Name</string>
+    <string name="register_lastname">Last Name</string>
+    <string name="register_address">Address</string>
+    <string name="register_creditcard">Credit Card</string>
+    <string name="register_expirydate">Expire Date (YYYY-MM-DD)</string>
+    <string name="register_button">Create New Account</string>
+
+    <string name="flightsearch_header">Search Flights</string>
+    <string name="flightsearch_origin">Origin</string>
+    <string name="flightsearch_destination">Destination</string>
+    <string name="flightsearch_departuredate">Departure Date</string>
+    <string name="flightsearch_button">Search Flights</string>
+
+    <string name="itinerarysearch_header">Search Itineraries</string>
+    <string name="itinerarysearch_origin">Origin</string>
+    <string name="itinerarysearch_destination">Destination</string>
+    <string name="itinerarysearch_departuredate">Departure Date (yyyy-MM-dd)</string>
+    <string name="itinerarysearch_button">Search Itineraries</string>
+
+    <string name="clientsearch_header">Search Client</string>
+    <string name="clientsearch_email">Email</string>
+    <string name="clientsearch_button">Search Client</string>
+
+    <string name="clientinfo_header">My Information</string>
+    <string name="clientinfo_firstname">First Name</string>
+    <string name="clientinfo_lastname">Last Name</string>
+    <string name="clientinfo_email">Email</string>
+    <string name="clientinfo_passwordbtn">Change Password</string>
+    <string name="clientinfo_address">Address</string>
+    <string name="clientinfo_creditcard">Credit Card</string>
+    <string name="clientinfo_expiry">Expiry</string>
+    <string name="clientinfo_updateinfobtn">Update Information</string>
+    <string name="clientinfo_viewbookeditineraries">View Booked Itineraries</string>
+
+    <string name="changepass_pass">New Password</string>
+    <string name="changepass_oldpass">Current Password</string>
+    <string name="changepass_confirmpass">Confirm Password</string>
+    <string name="changepass_btn">Change Password</string>
+
+    <string name="addflight_header">Add Flight</string>
+    <string name="addflight_flightnum">Flight Number</string>
+    <string name="addflight_departdate">Departure Date and time (yyyy-mm-dd hh:mm)</string>
+    <string name="addflight_arivaldate">Arrival Date and time (yyyy-mm-dd hh:mm)</string>
+    <string name="addflight_origin">Origin</string>
+    <string name="addflight_destination">Destination</string>
+    <string name="addflight_cost">Cost</string>
+    <string name="addflight_numseats">Number of Seats</string>
+    <string name="addflight_btn">Add Flight</string>
+    <string name="addflight_fromfile">Or from a file</string>
+    <string name="addflight_path">Path</string>
+    <string name="addflight_filebtn">Add Flight form a file</string>
+    <string name="addfilght_airline">Airline</string>
+
+    <string name="flightresults_header">Showing Flights</string>
+
+    <string name="flight_airline">Airline</string>
+    <string name="flight_num">Flight Number</string>
+    <string name="flight_cost">Cost</string>
+    <string name="flight_departdate">Departure date</string>
+    <string name="flight_arivaldate">Arrival date</string>
+    <string name="flight_origin">Origin</string>
+    <string name="flight_destination">Destination</string>
+    <string name="flight_numseats">Number of seats</string>
+
+    <string name="itineraryresults_header">Showing Itineraries</string>
+    <string name="itineraryresults_sortbytimebtn">Sort By Time</string>
+    <string name="itineraryresults_sortbycostbtn">Sort By Cost</string>
+
+    <string name="addclient_header">Add Client</string>
+    <string name="addclient_fromfile">Add Client From A File</string>
+
+    <string name="menuc_header">Main Menu</string>
+    <string name="menuc_flightsearchbtn">Search Flights</string>
+    <string name="menuc_itinerarysearchbtn">Search Itineraries</string>
+    <string name="menuc_viewbookeditinerary">View Booked Itineraries</string>
+    <string name="menuc_clientinfobtn">My Information</string>
+    <string name="menuc_signout">Sign Out</string>
+
+    <string name="menua_header">Main Menu for Admin</string>
+    <string name="menua_flightsearchbtn">Search Flights</string>
+    <string name="menua_itinerarysearchbtn">Search itineraries</string>
+    <string name="menua_clientsearchbtn">Search Client</string>
+    <string name="menua_addflightbtn">Add flights</string>
+    <string name="menua_addclientbtn">Add/Edit Clients</string>
+    <string name="menua_signout">Sign Out</string>
+
+    <string name="itinerary_header">Itinerary</string>
+    <string name="itinerary_bookbtn">Book this Itinerary</string>
+
+    <string name="flight_header">Flight</string>
+    <string name="flight_updatebtn">Update Flight</string>
+
+    <string name="bookeditinerary_header">Booked Itineraries</string>
+
+</resources>

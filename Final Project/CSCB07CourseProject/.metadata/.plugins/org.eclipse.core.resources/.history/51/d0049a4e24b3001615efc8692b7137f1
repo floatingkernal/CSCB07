@@ -1,0 +1,38 @@
+package cs.b07.cscb07courseproject;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+import travel.Client;
+
+public class MainActivity extends AppCompatActivity {
+  public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+  }
+
+  Client c1 = new Client("jane@email.com", "123 Main Street", "1111222233334444", "2018-08-24", "Jane", "Doe");
+
+  /**
+   * Clicks button and performs operation to retrieve info of client with specified email.
+   * 
+   * @param view
+   *        the view to display upon inputting information.
+   */
+  public void sendMessage(View view) {
+    Intent intent = new Intent(this, ClientInfoResponse.class);
+
+    EditText editText = (EditText) findViewById(R.id.edit_message);
+    String message = editText.getText().toString();
+    if (message.equals(c1.getEmail())) {
+      intent.putExtra("clientkey", c1);
+      startActivity(intent);
+    }
+  }
+}

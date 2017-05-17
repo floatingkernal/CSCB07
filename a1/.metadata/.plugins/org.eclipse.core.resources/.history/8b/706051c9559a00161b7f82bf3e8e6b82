@@ -1,0 +1,66 @@
+/**
+ * 
+ */
+package ui;
+
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.io.IOException;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import game.Constants;
+import game.VacuumGame;
+
+/**
+ * @author sharif53
+ *
+ */
+public class TextUi implements Ui {
+  private VacuumGame game;
+  
+  /**
+   * @param game
+   */
+  public TextUi(VacuumGame game) {
+    super();
+    this.game = game;
+  }
+  
+  /* (non-Javadoc)
+   * @see ui.Ui#launchGame()
+   */
+  @Override
+  public void launchGame() {
+    
+    // loop until we get a game over
+    while(!game.gameOver()){
+      System.out.println(game);
+      try {
+        int input = System.in.read();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      System.out.flush();
+    }
+  }
+
+  /* (non-Javadoc)
+   * @see ui.Ui#displayWinner()
+   */
+  @Override
+  public void displayWinner() {
+    char winner = game.getWinner();
+    if(winner == Constants.P1) {
+      System.out.println(winner + " is the WINNER!");
+    } else if(winner == Constants.P2){
+      System.out.println(winner + " is the Winner!");
+    } else {
+      System.out.println("The game was a tie!");
+    }
+  }
+
+}

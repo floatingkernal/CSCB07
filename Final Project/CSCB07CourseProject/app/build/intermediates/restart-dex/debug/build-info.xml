@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="25"
+    density="xxhdpi"
+    format="8"
+    plugin-version="2.2.2"
+    timestamp="1769869097363854"
+    token="5070750685167284308"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="12575" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="2917" />
+    <task
+        name="verifier"
+        duration="691" />
+
+    <artifact
+        location="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="1769869097363854"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

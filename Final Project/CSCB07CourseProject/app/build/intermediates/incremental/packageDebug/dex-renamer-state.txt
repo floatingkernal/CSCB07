@@ -1,0 +1,7 @@
+#Sun Dec 04 16:26:26 EST 2016
+base.0=/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b2235c1b67c65f66f30b605b9503d011575422fa
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c072401f6836a67d07a10b4c314cf7093a82cde8/classes.dex
+base.1=/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c072401f6836a67d07a10b4c314cf7093a82cde8
+file.0=/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b2235c1b67c65f66f30b605b9503d011575422fa/classes.dex

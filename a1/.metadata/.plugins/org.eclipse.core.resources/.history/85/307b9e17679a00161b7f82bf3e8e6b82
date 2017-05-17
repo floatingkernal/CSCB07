@@ -1,0 +1,373 @@
+package game;
+
+import sprites.CleanHallway;
+import sprites.Dirt;
+import sprites.Dumpster;
+import sprites.Dust;
+import sprites.DustBall;
+import sprites.Sprite;
+import sprites.Vacuum;
+import sprites.Wall;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * A class that represents the basic functionality of the vacuum game. This
+ * class is responsible for performing the following operations: 1. At creation,
+ * it initializes the instance variables used to store the current state of the
+ * game. 2. When a move is specified, it checks if it is a legal move and makes
+ * the move if it is legal. 3. It reports information about the current state of
+ * the game when asked.
+ */
+public class VacuumGame {
+
+  private Random random; // a random number generator to move the DustBalls
+  private Grid<Sprite> grid; // the grid
+  private Vacuum vacuum1; // the first player
+  private Vacuum vacuum2; // the second player
+  private List<Dust> dusts; // the dusts
+  private List<DustBall> dustBalls; // the dust balls
+
+  /**
+   * Creates a new <code>VacuumGame</code> that corresponds to the given input
+   * text file. Assumes that the input file has one or more lines of equal
+   * lengths, and that each character in it (other than newline) is a character
+   * that represents one of the <code>Sprite</code>s in this game. Uses gridType
+   * to implement the grid.
+   * 
+   * @param layoutFileName
+   *          path to the input grid file
+   * @param gridType
+   *          the type of grid implementation to use
+   */
+  public VacuumGame(String layoutFileName, Constants.GridType gridType) throws IOException {
+    dusts = new ArrayList<>();
+    dustBalls = new ArrayList<>();
+    random = new Random();
+
+    // open the file, read the contents, and determine dimensions of the grid
+    int[] dimensions = getDimensions(layoutFileName);
+    int numRows = dimensions[0];
+    int numColumns = dimensions[1];
+
+    if (gridType.equals(Constants.GridType.LIST_GRID)) {
+      grid = new ListGrid<>(numRows, numColumns);
+    } else {
+      grid = new MapGrid<>(numRows, numColumns);
+    }
+
+    // open the file again, read the contents, and store them in grid
+    Scanner sc = new Scanner(new File(layoutFileName));
+    for (int row = 0; row < numRows; row++) {
+      String nextLine = sc.nextLine();
+
+      /********
+       * Initialize the grid
+       ********/
+      // loop over each column, get the symbol
+      for (int col = 0; col < numColumns; col++) {
+        // pick the right sprite, place that sprite into the grid cell, if it is
+        // a dust or a dust ball,
+        // add it to its corresponding list
+        char sp = nextLine.charAt(col);
+        Sprite sprite;
+        if (sp == Constants.CLEAN) {
+          sprite = new CleanHallway(row, col);
+          grid.setCell(row, col, sprite);
+        } else if (sp == Constants.WALL) {
+          sprite = new Wall(row, col);
+          grid.setCell(row, col, sprite);
+        } else if (sp == Constants.DUMPSTER) {
+          sprite = new Dumpster(row, col);
+          grid.setCell(row, col, sprite);
+        } else if (sp == Constants.DUST) {
+          sprite = new Dust(row, col, Constants.DUST_SCORE);
+          grid.setCell(row, col, sprite);
+          dusts.add((Dust) sprite);
+        } else if (sp == Constants.DUST_BALL) {
+          sprite = new DustBall(row, col, Constants.DUST_BALL_SCORE);
+          grid.setCell(row, col, sprite);
+          dustBalls.add((DustBall) sprite);
+        } else if (sp == Constants.P1) {
+          vacuum1 = new Vacuum(sp, row, col, Constants.CAPACITY);
+          vacuum1.setUnder(new CleanHallway(row, col));
+          grid.setCell(row, col, vacuum1);
+        } else if (sp == Constants.P2) {
+          vacuum2 = new Vacuum(sp, row, col, Constants.CAPACITY);
+          vacuum2.setUnder(new CleanHallway(row, col));
+          grid.setCell(row, col, vacuum2);
+        }
+      }
+
+    }
+    sc.close();
+  }
+
+  /*********
+   * . Lots of methods
+   ************/
+
+  /**
+   * NumRow getter.
+   * 
+   * @return int
+   */
+  public int getNumRows() {
+    return this.grid.getNumRows();
+  }
+
+  /**
+   * NumColumn getter.
+   * 
+   * @return int
+   */ 
+  public int getNumColumns() {
+    return this.grid.getNumColumn();
+  }
+
+  /** Sprite getter.
+   * @param row int
+   * @param col int
+   * @return Sprite
+   */
+  public Sprite getSprite(int row, int col) {
+    return this.grid.getCell(row, col);
+  }
+
+  /** Grid getter.
+   * @return Grid of Sprites
+   */
+  public Grid<Sprite> getGrid() {
+    return this.grid;
+  }
+
+  /** Vacuum1 getter.
+   * @return Vacuum
+   */
+  public Vacuum getVacuumOne() {
+    return this.vacuum1;
+  }
+
+  /** Vacuum2 getter.
+   * @return Vacuum
+   */
+  public Vacuum getVacuumTwo() {
+    return this.vacuum2;
+  }
+
+  /** Move method.
+   * @param nextMove char
+   */
+  public void move(char nextMove) {
+    // if the char is p1 constants, move vacuum1, else if the char is p2
+    // constants, move vacuum2
+    if (nextMove == Constants.P1_UP || nextMove == Constants.P1_DOWN 
+        || nextMove == Constants.P1_LEFT || nextMove == Constants.P1_RIGHT) {
+      movingTo(vacuum1, nextMove);
+    } else if (nextMove == Constants.P2_UP || nextMove == Constants.P2_DOWN 
+        || nextMove == Constants.P2_LEFT || nextMove == Constants.P2_RIGHT) {
+      movingTo(vacuum2, nextMove);
+    }
+  }
+
+  private void movingTo(Vacuum vc, char nextMove) {
+    int crow = vc.getRow();
+    int ccol = vc.getColumn();
+    int nrow;
+    int ncol;
+    // get the new cord.
+    if (nextMove == Constants.P1_UP || nextMove == Constants.P2_UP) {
+      nrow = crow + Constants.UP;
+      ncol = ccol;
+    } else if (nextMove == Constants.P1_DOWN || nextMove == Constants.P2_DOWN) {
+      nrow = crow + Constants.DOWN;
+      ncol = ccol;
+    } else if (nextMove == Constants.P1_LEFT || nextMove == Constants.P2_LEFT) {
+      nrow = crow;
+      ncol = ccol + Constants.LEFT;
+    } else if (nextMove == Constants.P1_RIGHT || nextMove == Constants.P2_RIGHT) {
+      nrow = crow;
+      ncol = ccol + Constants.RIGHT;
+    } else {
+      nrow = crow;
+      ncol = ccol;
+    }
+    Sprite nextsprite = grid.getCell(nrow, ncol);
+    boolean legalmove = (nextsprite.getSymbol() != Constants.WALL 
+        && nextsprite.getSymbol() != Constants.P1 && nextsprite.getSymbol() != Constants.P2);
+    if (legalmove) {
+      refreshDust();
+      // remove the correct dust or dust ball form the list of dusts.
+      for (int d = 0; d < dustBalls.size(); d++) {
+        moveDust(dustBalls.get(d));
+      }
+      Sprite presprite = vc.getUnder();
+      if (presprite.getSymbol() == Constants.DUST && vc.clean(vc.getScore())) {
+        dusts.remove(presprite);
+      } else if (presprite.getSymbol() == Constants.DUST_BALL && vc.clean(vc.getScore())) {
+        dustBalls.remove(presprite);
+      }
+      // set vacuum.under sprite to this location,
+      // move vacuum to new location, get the sprite under the vacuum, update
+      // the grid.
+      grid.setCell(crow, ccol, vc.getUnder());
+      vc.setUnder(grid.getCell(nrow, ncol));
+      vc.moveTo(nrow, ncol);
+      grid.setCell(nrow, ncol, vc);
+      vc.empty();
+      System.out.println(dusts);
+    }
+  }
+
+  private void moveDust(DustBall di) {
+    // pick a random direction
+    // check if it is a legal move
+    // update
+    int dir = random.nextInt(2);
+    int dis = random.nextInt(3);
+    int crow = di.getRow();
+    int ccol = di.getColumn();
+    int[] distance = { 0, Constants.UP, Constants.DOWN };
+
+    if (dir == 0) {
+      Sprite nextsprite = grid.getCell(crow + distance[dis], ccol);
+      boolean legalmove = (nextsprite.getSymbol() != Constants.DUMPSTER 
+          && nextsprite.getSymbol() != Constants.WALL
+          && nextsprite.getSymbol() != Constants.P1 
+          && nextsprite.getSymbol() != Constants.P2);
+      if (legalmove) {
+        if (dis != 0) {
+          createDust(crow, ccol);
+          di.moveTo(crow + distance[dis], ccol);
+          grid.setCell(crow + distance[dis], ccol, di);
+        } 
+      }
+    } else if (dir == 1) {
+      Sprite nextsprite = grid.getCell(crow, ccol + distance[dis]);
+      boolean legalmove = (nextsprite.getSymbol() != Constants.DUMPSTER 
+          && nextsprite.getSymbol() != Constants.WALL
+          && nextsprite.getSymbol() != Constants.P1 
+          && nextsprite.getSymbol() != Constants.P2);
+      if (legalmove) {
+        if (dis != 0) {
+          createDust(crow, ccol);
+          di.moveTo(crow, ccol + distance[dis]);
+          grid.setCell(crow, ccol + distance[dis], di);
+        }
+      }
+    }
+  }
+  private void createDust(int row, int col) {
+    Dust dirt;
+    if (!checkdust(row, col)) {
+      dirt = new Dust(row, col, Constants.DUST_SCORE);
+      grid.setCell(row, col, dirt);
+      dusts.add(dirt);
+    } else {
+      dirt = getDust(row, col);
+      grid.setCell(row, col, dirt);
+    }    
+  }
+  private void refreshDust() {
+    for (int d = 0; d < dusts.size(); d++){
+      Dust dust = dusts.get(d);
+      int row = dust.getRow();
+      int col = dust.getColumn();
+      Sprite sp = grid.getCell(row, col);
+      if (!(sp instanceof Dirt)) {
+        grid.setCell(row, col, dust);
+        
+      }
+    }
+  }
+  private Dust getDust(int row, int col) {
+    Dust res = new Dust(row, col, Constants.DUST_SCORE);
+    for (int d = 0; d < dusts.size(); d++){
+      Dust dust = dusts.get(d);
+      if (dust.getRow() == row && dust.getColumn() == col) {
+        res = dust;
+      }
+    }
+    return res;
+  }
+  
+  private boolean checkdust(int row, int col){
+    boolean res = false;
+    for (int d = 0; d < dusts.size(); d++) {
+      Dust dust = dusts.get(d);
+      if (dust.getRow() == row && dust.getColumn() == col) {
+        res = true;
+      }
+    }
+    return res;
+  }
+  /**Check if gameover happened.
+   * @return boolean
+   */
+  public boolean gameOver() {
+    boolean res = false;
+    if (dusts.isEmpty() && dustBalls.isEmpty()) {
+      res = true;
+    }
+    return res;
+  }
+
+  /** Returns the winner.
+   * @return char
+   */
+  public char getWinner() {
+    if (vacuum1.getScore() > vacuum2.getScore()) {
+      return vacuum1.getSymbol();
+    } else if (vacuum1.getScore() < vacuum2.getScore()) {
+      return vacuum2.getSymbol();
+    } else {
+      return Constants.TIE;
+    }
+  }
+
+  /**
+   * Returns the dimensions of the grid in the file named layoutFileName.
+   * 
+   * @param layoutFileName
+   *          path of the input grid file
+   * @return an array [numRows, numCols], where numRows is the number of rows
+   *         and numCols is the number of columns in the grid that corresponds
+   *         to the given input grid file
+   * @throws IOException
+   *           if cannot open file layoutFileName
+   */
+  private int[] getDimensions(String layoutFileName) throws IOException {
+
+    Scanner sc = new Scanner(new File(layoutFileName));
+
+    // find the number of columns
+    String nextLine = sc.nextLine();
+    int numCols = nextLine.length();
+
+    // find the number of rows
+    int numRows = 1;
+    while (sc.hasNext()) {
+      numRows++;
+      nextLine = sc.nextLine();
+    }
+
+    sc.close();
+    return new int[] { numRows, numCols };
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return grid.toString();
+  }
+
+}

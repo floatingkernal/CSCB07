@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v18/values-v18.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 48,
+                        "endOffset": 99
+                    }
+                }
+            }
+        ]
+    }
+]

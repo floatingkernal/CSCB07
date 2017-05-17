@@ -1,0 +1,36 @@
+All information is stored in a SQL database, called "info" by default(Customizable in Constants).
+All information, except IDs, are stored as varchars to allow for easier usage (Don't need to worry about type during basic SQL retrieval,
+can cast as the required type later)
+
+Clients are stored in a table with columns:
+id, the primary key, used as an indexing value, incremented at each new row 
+email, value holding the client's email
+personalAddress, value holding the client's personal address
+creditCardNumber, value holding the client credit card number
+expiry, a value holding the client's expiry date
+firstName, a value holding the client's first name
+lastName, a value holding the client's last name
+password, a value holding the client's password
+
+Flights are stored in a table with columns:
+id, the primary key, used as an indexing value, incremented at each new row 
+flightNumber, the flight number of this flight
+airline, a value holding the airline of this flight
+cost, a value holding the cost of this flight
+departureDate, a value holding the data this flight departs
+arrivalDate, a value holding the data this flight arrives
+origin, a value holding the origin of this flight
+destination, a value holding the destination of this flight
+numSeats, a value holding the number of seats on this flight
+
+
+
+Itineraries are stored in a table with columns:
+id, the primary key, used as an indexing value, incremented at each new row (Important because itineraries do not have any unique values)
+clientEmail, the email of the Client that this Itinerary has been booked for
+flights, a list of flight IDs separated by ";" for this Itinerary
+
+
+{"create table clients( id integer primary key AUTOINCREMENT, email VARCHAR, personalAddress VARCHAR, creditCardNumber VARCHAR, expiry VARCHAR, firstName VARCHAR, lastName VARCHAR, password VARCHAR);",
+"create table flights(id integer primary key AUTOINCREMENT, flightNumber VARCHAR,airline VARCHAR, cost VARCHAR, departureDate VARCHAR, arrivalDate VARCHAR, origin VARCHAR, destination VARCHAR, numSeats VARCHAR)",
+"create table itineraries(id integer primary key AUTOINCREMENT, clientEmail VARCHAR,flights VARCHAR)"};

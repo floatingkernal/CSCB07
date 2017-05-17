@@ -1,0 +1,76 @@
+package sprites;
+
+import game.Constants;
+
+/** A sprite for Vacuum.
+ * @author sharif53
+ *
+ */
+public class Vacuum extends Sprite {
+  private int score;
+  private int capacity;
+  private int fullness;
+  private Sprite under;
+  
+  /** constructor for Vacuum.
+   * @param symbol
+   * @param row
+   * @param column
+   */
+  public Vacuum(char symbol, int row, int column, int capacity) {
+    super(symbol, row, column);
+    this.capacity = capacity;
+    this.fullness = 0;
+  }
+  
+  public void moveTo(int row, int column) {
+    // if the new cord is not negative or has a wall, then move this vacuum to the new cord.
+    if(row >= 0 && column >=0) {
+      super.updateCoordinates(row, column);
+    }
+  }
+  
+  public boolean clean(int score) {
+    boolean res = false;
+    // check if the vac is not full
+    if(this.fullness < capacity){
+      // check if under is a dust or a dust ball
+      if(under instanceof Dirt) {
+        fullness += Constants.FULLNESS_INC;
+        this.score += ((Dirt) under).getValue();
+        under = new CleanHallway(super.getRow(), super.getColumn());
+        res = true;
+      }
+    }
+
+    return res;
+  }
+  /** Emptying method for vacuum.
+   * 
+   */
+  public void empty() {
+    // if the vacuum is on top of a dumpster
+    if(under.getSymbol() == Constants.DUMPSTER){
+      // set the fullness of the vacuum to fullness init.
+      fullness = 0;
+    }
+  }
+  
+  /** under getter.
+   * @return the under
+   */
+  public Sprite getUnder() {
+    return under;
+  }
+
+  /** under setter.
+   * @param under the under to set
+   */
+  public void setUnder(Sprite under) {
+    this.under = under;
+  }
+
+  public int getScore() {
+    return this.score;
+  }
+}

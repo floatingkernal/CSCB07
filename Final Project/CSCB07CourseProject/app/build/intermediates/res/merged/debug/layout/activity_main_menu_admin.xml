@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_menu_admin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cs.b07.cscb07courseproject.MainMenuAdmin">
+
+    <TextView
+        android:text="@string/menua_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/menua_header"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menua_header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:text="@string/menua_flightsearchbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menua_flightsearchbtn"
+                android:onClick="searchFlights" />
+
+            <Button
+                android:text="@string/menua_itinerarysearchbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menua_itinerarysearchbtn"
+                android:onClick="searchItineraies" />
+
+            <Button
+                android:text="@string/menua_clientsearchbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menua_clientsearchbtn"
+                android:onClick="searchClient" />
+
+            <Button
+                android:text="@string/menua_addflightbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menua_addflightbtn"
+                android:onClick="addFlights" />
+
+            <Button
+                android:text="@string/menua_addclientbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menua_addclientbtn"
+                android:onClick="addClients" />
+
+            <Button
+                android:text="@string/menua_signout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/menua_signout"
+                android:onClick="signout" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Volumes/Tardis/Documents/Uni stuff/CSCB07/team_0541/p3_late/CSCB07CourseProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/anim/abc_slide_out_bottom.xml"
+    }
+]

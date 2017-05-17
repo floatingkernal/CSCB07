@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_client_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cs.b07.cscb07courseproject.ClientInfo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/clientinfo_header"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:text="@string/clientinfo_header" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/clientinfo_header"
+        android:id="@+id/clientinfo_info" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_below="@id/clientinfo_info">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/clientinfo_firstname"
+                android:hint="@string/clientinfo_firstname" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/clientinfo_lastname"
+                android:hint="@string/clientinfo_lastname" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"
+                android:background="#1111"
+                android:ems="10"
+                android:id="@+id/clientinfo_email"
+                android:hint="@string/clientinfo_email" />
+
+            <Button
+                android:text="@string/clientinfo_passwordbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/clientinfo_changepassbtn"
+                android:onClick="changePassword" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/clientinfo_address"
+                android:hint="@string/clientinfo_address" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/clientinfo_creditcard"
+                android:hint="@string/clientinfo_creditcard" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/clientinfo_expiry"
+                android:hint="@string/clientinfo_expiry" />
+
+            <Button
+                android:text="@string/clientinfo_updateinfobtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/clientinfo_update"
+                android:onClick="updateInfo" />
+
+            <Button
+                android:text="@string/clientinfo_viewbookeditineraries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/clientinfo_viewbookeditineraries"
+                android:onClick="viewBookedItineraries" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

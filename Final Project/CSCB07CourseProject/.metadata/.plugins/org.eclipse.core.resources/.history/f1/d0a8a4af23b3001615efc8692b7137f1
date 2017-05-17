@@ -1,0 +1,328 @@
+package controller;
+
+import travel.Client;
+import travel.Flight;
+import travel.Itinerary;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+
+
+
+/**
+ * Storage class to handle all interactions with stored information.
+ * 
+ * @author Cameron
+ * 
+ */
+public class Storage {
+  private String path;
+
+  /**
+   * Initialize a new <code>Storage</code> object with the default path
+   * 
+   * @throws StorageException if there is a problem using the default path (<code>IOException</code>
+   *         etc.)
+   */
+  public Storage() throws StorageException {
+    path = Constants.DEFAULT_SAVE_PATH;
+    createRequiredDir();
+  }
+
+  /**
+   * Initialize a new <code>Storage</code> object with the given path
+   * 
+   * @param path The desired path for all saved files
+   * @throws StorageException if there is a problem using the given path
+   *        (<code>IOException</code> etc.)
+   */
+  public Storage(String path) throws StorageException {
+    this.path = path;
+    createRequiredDir();
+  }
+
+  /**
+   * Create the required directory (Defaults to Constants.DEFAULT_SAVE_PATH)
+   * 
+   * @throws StorageException Thrown if directory cannot be created
+   */
+  private void createRequiredDir() throws StorageException {
+    File folder = new File(path);
+    // Create the required folder if it doesn't exist already
+    if (!folder.exists()) {
+      try {
+        folder.mkdir();
+      } catch (Exception exception) {
+        throw new StorageException("Cannot create directory in "
+      + folder.getPath() + ":" + exception.getMessage());
+      }
+    }
+  }
+
+  /**.
+   * Load all the clients from the file at the path specified
+   * 
+   * @param path The file path
+   * @throws StorageException Thrown when file cannot be parsed
+   */
+  public void loadClients(String path) throws StorageException {
+    // Get the contents of the file
+    String[] lines = readFile(path);
+    Client[] clients = new Client[lines.length];
+    // Iterate through the lines in the file and create a Client with the info from each line
+    for (int i = 0; i < lines.length; i++) {
+      String[] info = lines[i].split(";");
+      clients[i] = new Client(info[2], info[3], info[4], info[5], info[1], info[0]);
+    }
+    int clientsLength = clients.length;
+    Client[] all = new Client[clientsLength];
+    // If there are other clients already in storage, add the new clients to the end
+    try {
+      ArrayList<Client> instances = getInstances("clients.ser", Client.class);
+      Client[] temp = new Client[1];
+      Client[] currentObjs = instances.toArray(temp);
+      int currentLength = currentObjs.length;
+      all = new Client[currentLength + clientsLength];
+      System.arraycopy(currentObjs, 0, all, 0, currentLength);
+      System.arraycopy(clients, 0, all, currentLength, clientsLength);
+    } catch (StorageException exception) {
+      all = clients;
+    }
+    // Save all Clients to file
+    saveInstances(all, "clients.ser");
+  }
+
+  /**.
+   * Load flights from a file at the given path
+   * 
+   * @param path The path to the file
+   * @throws StorageException Thrown when the specified file cannot be parsed or there is an issue
+   *         with the file (IOException etc)
+   */
+  public void loadFlights(String path) throws StorageException {
+    // Get the file contents
+    String[] lines = readFile(path);
+    Flight[] flights = new Flight[lines.length];
+    // Iterate through the lines in the file and create a Flight with the info from each line
+    for (int i = 0; i < lines.length; i++) {
+      String[] info = lines[i].split(";");
+      try {
+        flights[i] = new Flight(info[0], info[3], Double.parseDouble(info[6]), info[1], info[2],
+            info[4], info[5]);
+      } catch (ParseException exception) {
+        throw new StorageException("Cannot parse flight cost in: " + path);
+      }
+    }
+    int flightsLength = flights.length;
+    Flight[] all = new Flight[flightsLength];
+    // If there are other flights already in storage, add the new flights to the end
+    try {
+      ArrayList<Flight> instances = getInstances("flights.ser", Flight.class);
+      Flight[] temp = new Flight[1];
+      Flight[] currentObjs = instances.toArray(temp);
+      int currentLength = currentObjs.length;
+      all = new Flight[currentLength + flightsLength];
+      System.arraycopy(currentObjs, 0, all, 0, currentLength);
+      System.arraycopy(flights, 0, all, currentLength, flightsLength);
+    } catch (StorageException exception) {
+      all = flights;
+    }
+    // Save all Flights to file
+    saveInstances(all, "flights.ser");
+  }
+
+  /**
+   * Get all itineraries for the user with given email
+   * 
+   * @param email Email of the desired User's inventories
+   * @return Returns an array of <code>Itinerary</code>s for the given email, else returns null.
+   */
+  public Itinerary[] getItineraries(String email) {
+    ArrayList<Itinerary> instances;
+    // Attempt to load all itineraries from storage if it exists.
+    // Else, return null as there are not itineraries
+    try {
+      instances = getInstances("itineraries.ser", Itinerary.class);
+    } catch (StorageException exception) {
+      return null;
+    }
+    ArrayList<Itinerary> userItineraries = new ArrayList<Itinerary>();
+    // Iterate through the itineraries found in storage,
+    // if it belongs to the User with the given email, add to userItineraries
+    for (int i = 0; i < instances.size(); i++) {
+      if (instances.get(i).getClient().getEmail().equals(email)) {
+        userItineraries.add(instances.get(i));
+      }
+    }
+    // Convert the list userItineraries to an array of Itineraries and return it.
+    Itinerary[] temp = new Itinerary[0];
+    return userItineraries.toArray(temp);
+  }
+
+  /**.
+   * Get all clients from storage
+   * 
+   * @return An array of <code>Client</code>s
+   * @throws StorageException Thrown when a file exception is found
+   */
+  public Client[] getClients() {
+    try {
+      ArrayList<Client> clients = (ArrayList<Client>) getInstances("clients.ser", Client.class);
+      // Convert the list to an array of Clients and return
+      Client[] ret = new Client[1];
+      return clients.toArray(ret);
+    } catch (StorageException exception) {
+      return new Client[0];
+    }
+  }
+  
+  public void setPassword(String user, String password) throws StorageException {
+    ArrayList<HashMap> passwords;
+    try {
+    passwords = ((ArrayList<HashMap>) getInstances("passwords.ser", HashMap.class));
+    } catch (StorageException e) {passwords = new ArrayList<HashMap>();passwords.add(new HashMap<String, String>());}
+    passwords.get(0).put(user, password);
+    HashMap[] allPasswords = {passwords.get(0)};
+    saveInstances(allPasswords, "passwords.ser");
+  }
+  
+	public String getPassword(String user) throws StorageException {
+	    HashMap<String, String> passwords = ((ArrayList<HashMap>) getInstances("passwords.ser", HashMap.class)).get(0);
+	    if (passwords.containsKey(user)) {
+	      return passwords.get(user);
+	    } else {
+	      return null;
+	    }
+	}
+  public Itinerary[] getItineraries() {
+    try {
+      ArrayList<Itinerary> itineraries = (ArrayList<Itinerary>)getInstances("itinerary.ser", Itinerary.class);
+      Itinerary[] temp = new Itinerary[0];
+      return itineraries.toArray(temp);
+    } catch (StorageException e) {
+      return new Itinerary[0];
+    }
+  }
+  public void addItinerary(Itinerary itinerary) throws StorageException {
+    Itinerary[] addedItinerary = {itinerary};
+    Itinerary[] all;
+    try {
+      ArrayList<Itinerary> instances = getInstances("itinerary.ser", Itinerary.class);
+      Itinerary[] temp = new Itinerary[0];
+      Itinerary[] currentObjs = instances.toArray(temp);
+      int currentLength = currentObjs.length;
+      all = new Itinerary[currentLength + 1];
+      System.arraycopy(currentObjs, 0, all, 0, currentLength);
+      System.arraycopy(addedItinerary, 0, all, currentLength, 1);
+    } catch (StorageException exception) {
+      all = new Itinerary[1];
+      all = addedItinerary;
+    }
+    saveInstances(all, "itinerary.ser");
+  }
+  /**.
+   * Get all flights from storage
+   * 
+   * @return An array of <code>Flight</code>s
+   * @throws StorageException Thrown when a file exception is found
+   */
+  public Flight[] getFlights() {
+    try {
+      ArrayList<Flight> flights = (ArrayList<Flight>) getInstances("flights.ser", Flight.class);
+      // Convert the list to an array of Flights and return
+      Flight[] ret = new Flight[1];
+      return flights.toArray(ret);
+    } catch (StorageException exception) {
+      return null;
+    }
+  }
+
+  /**.
+   * Save instances of type T to the specified file
+   * 
+   * @param obj Instances to be saved
+   * @param fileName File name to save to
+   * @throws StorageException Thrown when there is a problem writing to the file
+   */
+  private <T> void saveInstances(T[] obj, String fileName) throws StorageException {
+    try {
+      // Set the desired output file to save-path/fileName
+      FileOutputStream fileOutputStream = new FileOutputStream(path + fileName);
+      ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+      // Write each object to the file
+      for (int i = 0; i < obj.length; i++) {
+        objectOutputStream.writeObject(obj[i]);
+      }
+      objectOutputStream.close();
+    } catch (Exception exception) {
+      throw new StorageException("Cannot save file " + fileName + ":" + exception.getClass());
+    }
+  }
+
+  /**.
+   * Get instances from the desired file and cast them to the desired type
+   * 
+   * @param fileName File to read
+   * @param castTo Type to case objects to
+   * @return A list of Objects of type castTo found in the file
+   * @throws StorageException Thrown if instances could not be loaded from the file
+   */
+  private <T> ArrayList<T> getInstances(String fileName, Class<T> castTo) throws StorageException {
+    ArrayList<T> objects = new ArrayList<T>();
+    try {
+      // Select file at save-path/fileName
+      FileInputStream fileInputStream = new FileInputStream(path + fileName);
+      ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+      T obj;
+      // Add all objects, casted as castTo to the list.
+      // When finished, readObject() throws java.io.EOFException -> end loop
+      while (true) {
+        try {
+          obj = castTo.cast(objectInputStream.readObject());
+          objects.add(obj);
+        } catch (java.io.EOFException exception) {
+          break;
+        }
+      }
+      objectInputStream.close();
+    } catch (Exception exception) {
+      throw new StorageException("Could not get instances for " 
+    + fileName + ":" + exception.getMessage());
+    }
+    return objects;
+  }
+
+  /**.
+   * Read the specified file
+   * 
+   * @param filePath Path to the desired file
+   * @return An array of the lines found in the file
+   * @throws StorageException Thrown if the file cannot be read
+   */
+  private String[] readFile(String filePath) throws StorageException {
+    ArrayList<String> lines = new ArrayList<String>();
+    //
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(new File(filePath)));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        lines.add(line);
+      }
+      reader.close();
+    } catch (Exception exception) {
+      throw new StorageException("Cannot read file " + filePath + ":" + exception.getMessage());
+    }
+    // Convert the list to an array of type String and return
+    String[] ret = new String[1];
+    return (lines.toArray(ret));
+  }
+}
